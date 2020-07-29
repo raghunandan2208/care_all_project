@@ -1,0 +1,195 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+{% load ratings %}
+
+{% block sidebar %}
+
+
+{% include 'alerts.html' %}
+
+{% if user.is_authenticated and user.is_elder %}
+    <div class="container" id="profile">
+        <div class="row">
+            <div class="col-6"><img class="img-thumbnail img-fluid border rounded-circle d-lg-flex" src="{{elder_profile.image.url}}" width="150px" id="dash-pic" style="margin-right: 0px;margin-left: auto;">
+                <div class="row">
+                    <div class="col-12" style="margin-top: 80px;">
+                        <h2>Care Taker Info</h2>
+                        <hr>
+                    </div>
+
+              {% if trans %}
+
+              <div class="col-12" style="margin-top: 20px;"><img class="border rounded-circle" src="{{profile.image.url}}" style="width: 120px;"></div>
+              <div class="col" style="margin-top: 20px;">
+
+
+                        <h2 style="color: rgb(34,18,220);">{{trans.care_giver.user.username|capfirst}}</h2>
+
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Start Date</td>
+                                <td>{{trans.date_approved}}</td>
+                            </tr>
+                            <tr>
+                                <td>End Date</td>
+                                <td>{{trans.end_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Duration</td>
+                                <td>{{trans.duration}} days</td>
+                            </tr>
+                            <tr>
+                                <td>Amount to Pay</td>
+                                <td>Rs. {{trans.amount_to_pay}}</td>
+                            </tr>
+                            <tr>
+                                <td>Rating</td>
+                                <td>{% ratings trans.care_giver %}</td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+
+                                <td><a href="{% url 'younger_profile' trans.care_giver.user_id %}"><button class="btn btn-primary" type="button">View Profile</button></a></td>
+                                <td><a href="{% url 'payment' current_user.id %}"><button class="btn btn-primary" type="button">Pay</button></a></td>
+
+                            </tr>
+                            <tr></tr>
+                          </tbody>
+                      </table>
+                {% else %}
+
+                <div class="col-12" style="margin-top: 20px;"><img class="border rounded-circle" src="{% static 'img/default-avatar.jpg' %}" style="width: 120px;"></div>
+                <div class="col" style="margin-top: 20px;">
+
+                <h4 style="color: rgb(34,18,220);">You haven't choose a Care Taker yet...!</h4>
+
+
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Start Date</td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>End Date</td>
+                        <td>NA</td>
+                    </tr>
+                            <tr>
+                                <td>Duration</td>
+                                <td>NA</td>
+                            </tr>
+                            <tr>
+                                <td>Amount to Pay</td>
+                                <td>NA</td>
+                            </tr>
+                            <tr>
+                                <td>Rating</td>
+                                <td>NA</td>
+                            </tr>
+                            {% endif %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="text-left d-inline-flex" id="user_name" style="color: rgb(47,54,231);font-family: Aclonica, sans-serif;">{{ elder_profile.display_name|capfirst }}</h1><i class="icon ion-ios-location"></i>
+                        <p class="d-inline-flex" style="margin-left: 10px;">{{elder_profile.location}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="d-inline-flex" style="margin-left: 30px;">Rating :&nbsp</p>
+                        <h2 class="d-inline-flex" style="color: rgb(231,47,168);margin-bottom: 0;margin-left: 30px;margin-right: 20px;">{{dash_rating.average|floatformat|default:0}}&nbsp&nbsp&nbsp&nbsp</h2>
+
+                            {% if elder.need_help == True %}
+                            <a href="{% url 'change_status' %}"><button type="button" class="btn btn-success">Active</button></a>
+                            {% else %}
+                            <a href="{% url 'change_status' %}"><button type="button" class="btn btn-danger">In-Active</button></a>
+                            {% endif %}
+
+                          </div>
+                </div>
+                <br><h4 style="color: rgb(47,54,231);">Account Balance: Rs. <span class="h4" style="color: rgb(231,47,168);">{{elder.funds}}</span></h4>
+                <h2 class="d-inline-flex" style="margin-top: 50px;margin-left: 30px;">Latest Requests</h2>
+                <hr>
+                <div class="row">
+                {% for request in request_by_younger%}
+                    <div class="col-2 text-center d-lg-flex align-items-lg-start" style="padding-top: 15px;"><img class="rounded-circle" src="{% static 'img/default-avatar.jpg' %}" style="width: 50px;margin-left: 15px;">
+                        <hr>
+                    </div>
+                    <div class="col-6" style="padding-top: 20px;">
+                        <p style="color: rgb(0,0,0);font-size: 20px;">{{request.request_by|capfirst}}</p>
+                        <hr>
+                    </div>
+                    <div class="col-4" style="padding-top: 15px;"><a class="btn btn-primary" href="{% url 'younger_profile' request.request_by.user_id %}" style="color:white;" type="button">View Profile</a>
+                        <hr>
+                    </div>
+                    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endif %}
+
+    {% if user.is_authenticated and user.is_younger %}
+
+    <div class="container" id="profile">
+       <div class="row">
+           <div class="col-2"><img class="img-thumbnail img-fluid border rounded-circle d-lg-flex" src="{{ elder_profile.image.url }}" width="150px" id="dash-pic" style="margin-right: 0px;margin-left: auto;"></div>
+           <div class="col">
+               <div class="row">
+                   <div class="col">
+                       <h1 class="text-left d-inline-flex" id="user_name" style="color: rgb(47,54,231);font-family: Aclonica, sans-serif;">{{ elder_profile.display_name|capfirst }}</h1><i class="icon ion-ios-location">&nbsp&nbsp{{elder_profile.location}}</i>
+
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col">
+                       <p class="d-inline-flex" style="margin-left: 30px;">Rating :&nbsp</p>
+                       <h2 class="d-inline-flex" style="color: rgb(231,47,168);margin-bottom: 0;margin-left: 30px;margin-right: 20px;">{{dash_rating.average|floatformat|default:0}}</h2></div>
+               </div>
+               <h2 class="d-inline-flex" style="margin-top: 50px;margin-left: 30px;">Available Elders</h2>
+               <hr>
+
+               <div class="row">
+
+                 {% for seekers in help_seekers %}
+
+                   <div class="col-2 text-center d-lg-flex align-items-lg-start" style="padding-top: 15px;"><img class="rounded-circle" src="{% static 'img/default-avatar.jpg' %}" style="width: 50px;margin-left: 15px;">
+                       <hr>
+                   </div>
+                   <div class="col-6" style="padding-top: 20px;">
+                       <p style="color: rgb(0,0,0);font-size: 20px;">{{seekers|capfirst}}</p>
+                       <hr>
+                   </div>
+                   <div class="col-4" style="padding-top: 15px;"><a class="btn btn-primary" href="{% url 'elder_profile' seekers.user_id %}" type="button">View Profile</a>
+                       <hr>
+                   </div>
+
+                   {% endfor %}
+
+                 </div>
+           </div>
+       </div>
+   </div>
+
+  {% endif %}
+
+{% endblock %}

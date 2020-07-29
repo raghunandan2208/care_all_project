@@ -1,0 +1,17 @@
+Django==2.2.12
+django-braces==1.14.0
+django-crispy-forms==1.9.0
+django-generic-positions==0.2.3
+django-hvad==1.8.0
+django-libs==2.0.3
+django-model-utils==4.0.0
+-e git://github.com/bitmazk/django-review.git@70d4b5c8d52d9a5615e5d0f5c7f147e15573c566#egg=django_review
+django-star-ratings==0.9.1
+django-user-media==1.2.5
+easy-thumbnails==2.7
+Pillow==7.1.2
+pytz==2020.1
+simplejson==3.17.0
+six==1.15.0
+sqlparse==0.3.1
+swapper==1.1.2.post1

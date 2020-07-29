@@ -1,0 +1,69 @@
+{% load static %}
+
+<nav class="navbar navbar-light navbar-expand-md fixed-top bg-white">
+    <div class="container"><a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.jpeg' %}" id="logo"><strong>KareMe <sup>{{user_type|capfirst}}</sup></strong></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div
+            class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+
+
+                {% if user.is_authenticated %}
+                <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'dashboard' %}">Welcome {{ user.get_username|upper }}</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'dashboard' %}">DashBoard</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'guest_contacts' %}">ContactUs</a></li>
+            </ul>
+    </div>
+    </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" href="#">KareMe <sup>{{user_type}}</sup> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            {% if user.is_authenticated and user.is_elder %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'change_status' %}">Change status</a>
+            </li>
+            {% endif %}
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile-update' %}">Update Profile </a>
+        </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'dashboard' %}">Welcome {{ user.get_username|upper }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout |</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">SignUp |</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">ContactUs</a>
+            </li>
+        </ul>
+
+    </div>
+</nav> -->

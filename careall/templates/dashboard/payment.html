@@ -1,0 +1,59 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+
+{% block sidebar %}
+
+WELCOME {{ user.username }} <br>
+
+{% include 'alerts.html' %}
+
+
+<br>
+<div class="container">
+
+
+<h1 style="text-align:center;">Thank You for using our Services...</h1>
+<br><br>
+<h2 style="text-align:center; color:black;">Tax-Invoice</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Care Seeker</td>
+                <td>{{bill.care_to}}</td>
+            </tr>
+            <tr>
+                <td>Cate Taker</td>
+                <td>{{bill.care_by}}</td>
+            </tr>
+            <tr>
+                <td>Start-Service Date</td>
+                <td>{{bill.date_started}}</td>
+            </tr>
+            <tr>
+                <td>Scheduled End-Service Date</td>
+                <td>{{bill.scheduled_end_date}}</td>
+            </tr>
+            <tr>
+                <td>Requested End-Service Date</td>
+                <td>{{bill.date_ended}}</td>
+            </tr>
+            <tr>
+                <td>Duration (Min. 7 days)</td>
+                <td>{{bill.duration}}days</td>
+            </tr><tr>
+                <td>Amount Paid</td>
+                <td>Rs. {{bill.amount_paid}}</td>
+            </tr>
+            <tr></tr>
+          </tbody>
+      </table>
+      </div>
+      <br>
+<a href="{% url 'dashboard' %}"><button class="btn btn-primary">Back to Dashboard</button></a>
+
+     </div>
+{% endblock %}

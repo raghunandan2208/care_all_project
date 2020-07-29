@@ -1,0 +1,101 @@
+#promo {
+  text-align: center;
+  padding: 40px;
+  background: url(../../static/img/index.jpg) no-repeat;
+  background-size: cover;
+  height: 500px;
+  margin-top: 60px;
+}
+
+@media (min-width: 992px) {
+  #promo {
+    padding: 20px;
+  }
+}
+
+#promo .jumbotron {
+  border-radius: 20px;
+  padding: 40px;
+  background-color: rgba(255,255,255,0.75);
+  max-width: 900px;
+  margin: 100px auto;
+}
+
+@media (min-width: 992px) {
+  #promo .jumbotron {
+    padding: 20px;
+  }
+}
+
+.site-section {
+  text-align: center;
+  
+}
+
+.site-section h1 {
+  margin-bottom: 30px;
+}
+
+#welcome {
+  max-width: 800px;
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.col-md-4 {
+}
+
+.why {
+  background-color: #e9fbec;
+}
+
+.row.why {
+  padding-top: 30px;
+}
+
+.row.why i {
+  color: rgb(255,92,0);
+}
+
+.row.why h2 {
+  padding-top: 20px;
+}
+
+#logo {
+  max-height: 42px;
+}
+
+#des {
+  color: #8b8989;
+}
+
+#choose {
+  text-align: center;
+  font-size: 46px;
+  padding-top: 30px;
+}
+
+#contact {
+  height: 235px;
+  width: 452px;
+  border-radius: 10px;
+}
+
+#contact-text {
+  padding: 0 20px;
+}
+
+#contact-row {
+  margin-top: 30px;
+}
+
+#profile {
+  margin-top: 20px;
+}
+
+#user_name {
+  margin: 30px;
+}
+
+#dash-pic {
+}

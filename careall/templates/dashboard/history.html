@@ -1,0 +1,157 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+{% load ratings %}
+
+{% block sidebar %} <br><br>
+<h2>Hello... {{ user.username|capfirst }}</h2> <br><br>
+
+{% include 'alerts.html' %}
+
+{% if user.is_authenticated and user.is_younger %}
+
+            <h1>On - Going Services </h1><hr>
+            {% if y_history %}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Care Seeker</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Duration</th>
+                        <th>Amount to Receive</th>
+                        <th>Rating</th>
+
+                    </tr>
+
+                    {%for x in y_history %}
+                    <tbody>
+                        <tr>
+                            <td>{{x.care_seeker}}</td>
+                            <td>{{x.date_approved.date}}</td>
+                            <td>{{x.end_date}}</td>
+                            <td>{{x.duration}}</td>
+                            <td>{{x.amount_to_pay}}</td>
+                            <td>{% ratings x.care_seeker%}</td>
+
+
+
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+
+                </thead>
+            </table>
+            {% else %}
+            <h4>No Services younger</h4>
+          {% endif %}
+
+<br><hr><br>
+                <h1>Completed Services</h1><hr>
+                {% if y_comp %}
+                <table class="table table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>Care Seeker</th>
+                                <th>Start Date</th>
+                                <th>Completed Date</th>
+                                <th>Duration</th>
+                                <th>Amount Received</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                            {%for x in y_comp %}
+                            <tbody>
+                                <tr>
+
+                                    <td>{{x.care_to}}</td>
+                                    <td>{{x.date_started}}</td>
+                                    <td>{{x.date_ended}}</td>
+                                    <td>{{x.duration}}</td>
+                                    <td>{{x.amount_paid}}</td>
+                                    <td>{% ratings x.care_to %}</td>
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+
+                </table>
+                {% else %}
+                <h4>No Services</h4><hr>
+                {% endif %}
+{% endif %}
+
+
+
+{% if user.is_authenticated and user.is_elder %}
+<h1>On - Going Services </h1><hr><br>
+{% if history %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Care Giver</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Duration</th>
+            <th>Amount to Pay</th>
+
+        </tr>
+
+        {%for x in history %}
+        <tbody>
+            <tr>
+                <td>{{x.care_giver}}</td>
+                <td>{{x.date_approved.date}}</td>
+                <td>{{x.end_date}}</td>
+                <td>{{x.duration}}</td>
+                <td>{{x.amount_to_pay}}</td>
+
+                <td>
+                    <button class="btn btn-primary"><a href="{% url 'payment' user.id  %}">End Services
+                            </a></button>
+                </td>
+
+            </tr>
+        </tbody>
+        {% endfor %}
+
+    </thead>
+</table>
+{% else %}
+<h4>No Services</h4>
+{% endif %}
+
+<br><hr><br>
+<h1>Completed Services</h1><hr>
+{% if comp %}
+<table class="table table-hover">
+        <thead>
+            <tr>
+
+                <th>Care Giver</th>
+                <th>Start Date</th>
+                <th>Completed Date</th>
+                <th>Duration</th>
+                <th>Amount Paid</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+            {%for x in comp %}
+            <tbody>
+                <tr>
+
+                    <td>{{x.care_by}}</td>
+                    <td>{{x.date_started}}</td>
+                    <td>{{x.date_ended}}</td>
+                    <td>{{x.duration}}</td>
+                    <td>{{x.amount_paid}}</td>
+                    <td>{% ratings x.care_by %}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+
+</table>
+{% else %}
+<h4>No Services</h4><hr>
+{% endif %}
+{% endif %}
+{% endblock %}

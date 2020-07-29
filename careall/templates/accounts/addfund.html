@@ -1,0 +1,57 @@
+
+{% extends 'sidebar.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block sidebar %}
+{% include 'alerts.html' %}
+{% if user.is_authenticated and user.is_elder %}
+    <div>
+        <div class="container">
+            <div class="row" style="margin-top: 10px;margin-right: 0px;margin-left: 0px;">
+                <div class="col-6" style="margin-left: auto;padding-right: 5px;">
+                    <h1 class="text-center">Add Fund to Your Wallet</h1>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-10 col-12">
+
+
+              <form>
+
+                <input type="number" name="addfund" class="form-control" placeholder="Enter Amount in Rs." value = "">
+                <a href="{% url 'addfund' %}"><button class="btn btn-success btn-block mt-4" type="submit">Add to Wallet</button></a>
+              </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5" style="margin-left: 0px;padding-right: 0px;padding-left: 0px;"><img class="img-fluid" src="{% static 'img/eefd4d45c0cd9dd7f3d86b4b49e7fc72.png' %}" style="width: 500px;"></div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+{% if user.is_authenticated and user.is_younger %}
+<div>
+    <div class="container">
+        <div class="row" style="margin-top: 10px;margin-right: 0px;margin-left: 0px;">
+            <div class="col-6" style="margin-left: auto;padding-right: 5px;">
+                <h1 class="text-center">Hello {{ user.username|capfirst }}..!</h1>
+                <hr><br><br>
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-md-8 col-sm-10 col-12"> -->
+                        <h1 class="text-center">Your Current Account Balance is </h1>
+                        <h1 class="text-center" style="color: rgb(231,47,168);">Rs. {{younger_earnings}}</h1>
+
+                    <!-- </div> -->
+                <!-- </div> -->
+            </div>
+            <div class="col-5" style="margin-left: 0px;padding-right: 0px;padding-left: 0px;"><img class="img-fluid" src="{% static 'img/eefd4d45c0cd9dd7f3d86b4b49e7fc72.png' %}" style="width: 500px;"></div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

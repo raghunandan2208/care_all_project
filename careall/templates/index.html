@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    <div id="promo">
+        <div class="jumbotron">
+            <h1>Welcome to KareMe</h1>
+            <p id="des">It's Nice to Meet You</p>
+            <div class="container site-section" id="welcome">
+                <p >Choose Your Need and Get Started With Us </p>
+                <a class="btn btn-primary" href="{% url 'younger_signup' %}" type="button" style="width: 180px;margin: 25px;">Register as Younger</a>
+                <a class="btn btn-primary" href="{% url 'elder_signup' %}" type="button" style="width: 180px;margin: 25px;">Register as Elder</a>
+              </div>
+
+
+        </div>
+    </div>
+
+    <div
+        class="why">
+        <h1 id="choose">Why Choose Us</h1>
+        <div class="container text-center">
+            <div class="row why">
+                <div class="col-md-4"><i class="fa fa-home d-lg-flex justify-content-lg-center" style="font-size: 100px;"></i>
+                    <h2 class="text-center">Homely</h2>
+                    <p class="text-justify" id="des"><br>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed
+                        to using 'Content here, content here', making it look like readable English.&nbsp;<br><br></p>
+                </div>
+                <div class="col-md-4"><i class="fa fa-star d-lg-flex justify-content-lg-center" style="font-size: 100px;"></i>
+                    <h2 class="text-center">Professional</h2>
+                    <p class="text-justify d-lg-flex justify-content-lg-center" id="des"><br>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed
+                        to using 'Content here, content here', making it look like readable English.&nbsp;<br><br></p>
+                </div>
+                <div class="col-md-4"><i class="fa fa-heart d-lg-flex justify-content-lg-center" style="font-size: 100px;"></i>
+                    <h2 class="text-center text-primary">Care</h2>
+                    <p class="text-justify d-lg-flex justify-content-lg-center" id="des"><br>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed
+                        to using 'Content here, content here', making it look like readable English.&nbsp;<br><br></p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- <div class="container" id="info-container">
+            <div class="row" id="contact-row">
+                <div class="col-md-12">
+                    <h1 class="text-center">Contact Us</h1>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6" id="contact-box">
+                    <p class="text-justify" id="contact-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis. </p>
+                    <div class="info-box"><i class="fa fa-map-marker my-info-icons"></i><span class="text-uppercase text-info">Address: </span><span>MCC Road, Aba, Abia State Nigeria</span></div>
+                    <div class="info-box"><i class="fa fa-envelope my-info-icons"></i><span class="text-uppercase text-info">Email: </span><span>contact@ensignhospital.org </span></div>
+                    <div class="info-box"><i class="fa fa-phone-square my-info-icons"></i><span class="text-uppercase text-info">Phone: </span><span>+234000000000 </span></div><img src="{% static 'img/landing.jpg' %}" id="contact" style="background-position: center;background-size: cover;background-repeat: no-repeat;background-image: url(&quot;assets/img/landing.jpg&quot;);width: 90%;height: 35vh;padding: 0;"></div>
+                <div
+                    class="col-12 col-sm-6 col-md-6 site-form">
+                    <form id="my-form">
+                        <div class="form-group"><label class="sr-only" for="firstname">First Name</label><input class="form-control" type="text" name="firstname" placeholder="First Name" autofocus="" id="firstname"></div>
+                        <div class="form-group"><label class="sr-only" for="lastname">Last Name</label><input class="form-control" type="text" name="lastname" placeholder="Last Name" id="lastname"></div>
+                        <div class="form-group"><label class="sr-only" for="phonenumber">Phone Number</label><input class="form-control" type="tel" name="phonenumber" required="" placeholder="Phone" id="phonenumber"></div>
+                        <div class="form-group"><label class="sr-only" for="email">Email Address</label><input class="form-control" type="text" name="email" required="" placeholder="Email" id="email"></div>
+                        <div class="form-group"><label class="sr-only" for="messages">Last Name</label><textarea class="form-control" rows="8" name="messages" required="" placeholder="Message"></textarea></div><button class="btn btn-primary d-lg-flex" type="button">Submit</button></form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        </div> -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 footer-navigation">
+                        <h3><a href="#" style="color: rgb(188,187,187);">KareMe</a></h3>
+                        <p class="links"><a href="#">Home</a><strong> ·&nbsp;</strong><a href="#">Pricing</a><strong> · </strong><a href="#"></a><a href="#">Contact</a></p>
+                        <p class="company-name">KareMe © 2020</p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 footer-contacts">
+                        <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                            <p><span class="new-line-span">21 Revolution Street</span> Hyderabad, India</p>
+                        </div>
+                        <div><i class="fa fa-phone footer-contacts-icon"></i>
+                            <p class="footer-center-info email text-left">+91 9996668888</p>
+                        </div>
+                        <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                            <p> <a href="#" target="_blank">support@kareme.com</a></p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-4 footer-about">
+                        <h4>About the company</h4>
+                        <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet. </p>
+                        <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+{% endblock %}
